@@ -65,6 +65,15 @@
             html2canvas(screenshotTarget).then((canvas) => {
                 const base64image = canvas.toDataURL("image/png");
                 console.log(base64image);
+
+                let blob = new Blob([base64image], { type: 'text/plain' });
+                
+                let a = document.createElement("a");
+                a.href = URL.createObjectURL(blob);
+                a.download = "output.txt";
+                document.body.appendChild(a);
+                a.click();
+                document.body.removeChild(a);
             })
         </script>
     </body>
