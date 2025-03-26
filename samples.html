@@ -26,7 +26,7 @@
             </div>
         </div>
         <h1>Image with Textures</h1>
-        <div class = "flex-container-horizontal">
+        <div class = "flex-container-horizontal" id = "it">
             <section class = "patternpurple" id = "pp"></section>
             <section class = "patterncat" id = "pc"></section>
             <section class = "patternsky"></section>
@@ -60,7 +60,7 @@
         <!-- <script src="imagepixel.js"></script> -->
         <script src="https://cdnjs.cloudflare.com/ajax/libs/html2canvas/1.4.1/html2canvas.min.js"></script>
         <script>
-            const screenshotTarget = document.body;
+            const screenshotTarget = document.getElementbyId("it");
 
             html2canvas(screenshotTarget).then((canvas) => {
                 const base64image = canvas.toDataURL("image/png");
