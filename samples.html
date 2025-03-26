@@ -1,0 +1,77 @@
+<html>
+    <head>
+        <link rel="stylesheet" href="styles.css">
+    </head>
+    <body>
+        <h1>CSS Textures</h1>
+        <div>
+            <!-- https://codepen.io/bitmap/pen/AzowBq -->
+            <div class = "flex-container-horizontal">
+                <section class="pattern1" id="p1"></section>
+                <section class="pattern2"></section>
+                <section class="pattern3"></section>
+                <section class="pattern4"></section>
+            </div>
+            <div class = "flex-container-horizontal">
+                <section class="pattern5"></section>
+                <section class="pattern6"></section>
+                <section class="pattern7"></section>
+                <section class="pattern8"></section>
+            </div>
+            <div class = "flex-container-horizontal">
+                <section class="pattern9"></section>
+                <section class="pattern10"></section>
+                <section class="pattern11"></section>
+                <section class="pattern12"></section>
+            </div>
+        </div>
+        <h1>Image with Textures</h1>
+        <div class = "flex-container-horizontal">
+            <section class = "patternpurple" id = "pp"></section>
+            <section class = "patterncat" id = "pc"></section>
+            <section class = "patternsky"></section>
+            <section class = "patternskyrepeat"></section>
+        </div>
+        <h1>Animations</h1>
+        <!-- https://www.w3schools.com/css/css3_animations.asp -->
+        <div class = "flex-container-horizontal">
+            <section class = "animationscc"></section>
+            <section><div class = "animationsmc"></div></section>
+            <section><div class = "animationssc"></div></section>
+            <section><div class = "animationsc"></div></section>
+        </div>
+        <h1>Image with 3D Transforms</h1>
+        <div class = "flex-container-horizontal">
+            <section class = "rotatetransform"></section>
+            <section class = "matrixtransform"></section>
+            <section class = "diagonaltransform"></section>
+            <section class = "zrottransform"></section>
+        </div>
+        <h1>Cube with 3D Transforms</h1>
+        <!-- https://developer.mozilla.org/en-US/docs/Web/CSS/transform-function/matrix3d -->
+        <section id="example-element" tabindex="0">
+            <div class="face front">1</div>
+            <div class="face back">2</div>
+            <div class="face right">3</div>
+            <div class="face left">4</div>
+            <div class="face top">5</div>
+            <div class="face bottom">6</div>
+        </section>
+        <!-- <script src="imagepixel.js"></script> -->
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/html2canvas/1.4.1/html2canvas.min.js"></script>
+        <script>
+            const screenshotTarget = document.body;
+
+            html2canvas(screenshotTarget).then((canvas) => {
+                const base64image = canvas.toDataURL("image/png");
+                window.location.href = base64image;
+            })
+        </script>
+    </body>
+</html>
+
+
+<!-- Add 3D and transforms (rotation?)-->
+<!-- https://blog.teamtreehouse.com/increase-your-sites-performance-with-hardware-accelerated-css -->
+
+
