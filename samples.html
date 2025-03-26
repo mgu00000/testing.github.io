@@ -4,7 +4,7 @@
     </head>
     <body>
         <h1>CSS Textures</h1>
-        <div>
+        <div id = "ct">
             <!-- https://codepen.io/bitmap/pen/AzowBq -->
             <div class = "flex-container-horizontal">
                 <section class="pattern1" id="p1"></section>
@@ -41,7 +41,7 @@
             <section><div class = "animationsc"></div></section>
         </div>
         <h1>Image with 3D Transforms</h1>
-        <div class = "flex-container-horizontal">
+        <div class = "flex-container-horizontal" id="i3t">
             <section class = "rotatetransform"></section>
             <section class = "matrixtransform"></section>
             <section class = "diagonaltransform"></section>
@@ -60,9 +60,9 @@
         <!-- <script src="imagepixel.js"></script> -->
         <script src="https://cdnjs.cloudflare.com/ajax/libs/html2canvas/1.4.1/html2canvas.min.js"></script>
         <script>
-            const screenshotTarget = document.getElementById("it");
+            const screenshotTarget1 = document.getElementById("ct");
 
-            html2canvas(screenshotTarget).then((canvas) => {
+            html2canvas(screenshotTarget1).then((canvas) => {
                 const base64image = canvas.toDataURL("image/png");
                 console.log(base64image);
 
@@ -70,7 +70,39 @@
                 
                 let a = document.createElement("a");
                 a.href = URL.createObjectURL(blob);
-                a.download = "output.txt";
+                a.download = "ct.txt";
+                document.body.appendChild(a);
+                a.click();
+                document.body.removeChild(a);
+            })
+
+            const screenshotTarget2 = document.getElementById("it");
+
+            html2canvas(screenshotTarget2).then((canvas) => {
+                const base64image = canvas.toDataURL("image/png");
+                console.log(base64image);
+
+                let blob = new Blob([base64image], { type: 'text/plain' });
+                
+                let a = document.createElement("a");
+                a.href = URL.createObjectURL(blob);
+                a.download = "it.txt";
+                document.body.appendChild(a);
+                a.click();
+                document.body.removeChild(a);
+            })
+
+            const screenshotTarget3 = document.getElementById("i3t");
+
+            html2canvas(screenshotTarget3).then((canvas) => {
+                const base64image = canvas.toDataURL("image/png");
+                console.log(base64image);
+
+                let blob = new Blob([base64image], { type: 'text/plain' });
+                
+                let a = document.createElement("a");
+                a.href = URL.createObjectURL(blob);
+                a.download = "i3t.txt";
                 document.body.appendChild(a);
                 a.click();
                 document.body.removeChild(a);
