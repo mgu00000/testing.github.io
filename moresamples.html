@@ -1,0 +1,180 @@
+<html>
+    <head>
+        <link rel="stylesheet" href="styles.css">
+    </head>
+    <body>
+        <h1>CSS Textures</h1>
+        <div id = "ct">
+            <!-- https://codepen.io/bitmap/pen/AzowBq -->
+            <div class = "flex-container-horizontal">
+                <section class="pattern1" id="p1"></section>
+                <section class="pattern2" id="p2"></section>
+                <section class="pattern3" id="p3"></section>
+                <section class="pattern4" id="p4"></section>
+            </div>
+            <div class = "flex-container-horizontal">
+                <section class="pattern5" id="p5"></section>
+                <section class="pattern6" id="p6"></section>
+                <section class="pattern7" id="p7"></section>
+                <section class="pattern8" id="p8"></section>
+            </div>
+            <div class = "flex-container-horizontal">
+                <section class="pattern9" id="p9"></section>
+                <section class="pattern10" id="p10"></section>
+                <section class="pattern11" id="p11"></section>
+                <section class="pattern12" id="p12"></section>
+            </div>
+        </div>
+        <h1>Image with Textures</h1>
+        <div class = "flex-container-horizontal" id = "it">
+            <section class = "patternpurple" id = "pp"></section>
+            <section class = "patterncat" id = "pc"></section>
+            <section class = "patternsky" id="ps"></section>
+            <section class = "patternskyrepeat" id="psr"></section>
+        </div>
+        <h1>Animations</h1>
+        <!-- https://www.w3schools.com/css/css3_animations.asp -->
+        <div class = "flex-container-horizontal">
+            <section class = "animationscc"></section>
+            <section><div class = "animationsmc"></div></section>
+            <section><div class = "animationssc"></div></section>
+            <section><div class = "animationsc"></div></section>
+        </div>
+        <h1>Image with 3D Transforms</h1>
+        <div class = "flex-container-horizontal" id="i3t">
+            <section class = "rotatetransform" id="rt"></section>
+            <section class = "matrixtransform" id="mt"></section>
+            <section class = "diagonaltransform" id="dt"></section>
+            <section class = "zrottransform" id="zrt"></section>
+        </div>
+        <h1>Cube with 3D Transforms</h1>
+        <div class = "flex-container-horizontal">
+            <!-- https://developer.mozilla.org/en-US/docs/Web/CSS/transform-function/matrix3d -->
+            <section id="example-element" tabindex="0">
+                <div class="face front">1</div>
+                <div class="face back">2</div>
+                <div class="face right">3</div>
+                <div class="face left">4</div>
+                <div class="face top">5</div>
+                <div class="face bottom">6</div>
+            </section>
+        </div>
+        <h1>Div in Divs 3D Transforms</h1>
+        <div class = "flex-container-horizontal">
+            <div class = "rotatetransformdiv" id="rtp1234">
+                <div class = "flex-container-horizontal">
+                    <section class="pattern1" style = "margin: 0%" id="dd1"></section>
+                    <section class="pattern2" style = "margin: 0%" id="dd2"></section>
+                </div>
+                <div class = "flex-container-horizontal">
+                    <section class="pattern3" style = "margin: 0%" id="dd3"></section>
+                    <section class="pattern4" style = "margin: 0%" id="dd4"></section>
+                </div>
+            </div>
+        </div>
+
+        <!-- <script src="imagepixel.js"></script> -->
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/html2canvas/1.4.1/html2canvas.min.js"></script>
+        <script>
+            let data = "name,x,y,width,height,top,right,bottom,left"
+            let ids = ["p1","p2","p3","p4","p5","p6","p7","p8","p9","p10","p11","p12","pp","pc","ps","psr","rt","mt","dt","zrt"];
+            let keys = ["x", "y", "width", "height", "top", "right", "bottom", "left"];
+            for (const id in ids){
+                let elem = document.getElementById(ids[id]);
+                let rect = elem.getBoundingClientRect();
+                let newline = ids[id];
+                for (const key in keys) {
+                    newline = newline +","+rect[keys[key]];
+                }
+                data = data +"\n"+newline;
+            }
+            console.log(data);
+
+            let blob = new Blob([data], { type: 'text/plain' });
+                
+            let a = document.createElement("a");
+            a.href = URL.createObjectURL(blob);
+            a.download = "positions.txt";
+            document.body.appendChild(a);
+            a.click();
+            document.body.removeChild(a);
+
+            let datadd = "name,x,y,width,height,top,right,bottom,left"
+            let idsdd = ["dd1", "dd2", "dd3", "dd4"];
+            for (const id in idsdd){
+                let elem = document.getElementById(idsdd[id]);
+                let rect = elem.getBoundingClientRect();
+                let newline = idsdd[id];
+                for (const key in keys) {
+                    newline = newline +","+rect[keys[key]];
+                }
+                datadd = datadd +"\n"+newline;
+            }
+            console.log(datadd);
+
+            blob = new Blob([datadd], { type: 'text/plain' });
+                
+            a = document.createElement("a");
+            a.href = URL.createObjectURL(blob);
+            a.download = "positions-dd.txt";
+            document.body.appendChild(a);
+            a.click();
+            document.body.removeChild(a);
+            
+
+            
+            const screenshotTarget1 = document.getElementById("ct");
+
+            html2canvas(screenshotTarget1).then((canvas) => {
+                const base64image = canvas.toDataURL("image/png");
+                console.log(base64image);
+
+                let blob = new Blob([base64image], { type: 'text/plain' });
+                
+                let a = document.createElement("a");
+                a.href = URL.createObjectURL(blob);
+                a.download = "ct.txt";
+                document.body.appendChild(a);
+                a.click();
+                document.body.removeChild(a);
+            })
+
+            const screenshotTarget2 = document.getElementById("it");
+
+            html2canvas(screenshotTarget2).then((canvas) => {
+                const base64image = canvas.toDataURL("image/png");
+                console.log(base64image);
+
+                let blob = new Blob([base64image], { type: 'text/plain' });
+                
+                let a = document.createElement("a");
+                a.href = URL.createObjectURL(blob);
+                a.download = "it.txt";
+                document.body.appendChild(a);
+                a.click();
+                document.body.removeChild(a);
+            })
+
+            const screenshotTarget3 = document.getElementById("i3t");
+
+            html2canvas(screenshotTarget3).then((canvas) => {
+                const base64image = canvas.toDataURL("image/png");
+                console.log(base64image);
+
+                let blob = new Blob([base64image], { type: 'text/plain' });
+                
+                let a = document.createElement("a");
+                a.href = URL.createObjectURL(blob);
+                a.download = "i3t.txt";
+                document.body.appendChild(a);
+                a.click();
+                document.body.removeChild(a);
+            })
+        </script>
+    </body>
+</html>
+
+
+<!-- Add 3D and transforms (rotation?)-->
+<!-- https://blog.teamtreehouse.com/increase-your-sites-performance-with-hardware-accelerated-css -->
+
